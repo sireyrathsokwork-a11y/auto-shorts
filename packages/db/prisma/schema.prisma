@@ -2,7 +2,6 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 // Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -10,4 +9,45 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  projects      Project[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  channelName String
+  niche       String
+  musicTrack  String
+  postingTime DateTime @default(now())
+  createdAt   DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  videos      Video[]
+}
+
+enum VideoStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  POSTED
+}
+
+model Video {
+  id          String      @id @default(cuid())
+  title       String
+  script      String
+  status      VideoStatus @default(PENDING)
+  scheduledAt DateTime?
+  postedAt    DateTime?
+  createdAt   DateTime    @default(now())
+  projectId   String
+  project     Project     @relation(fields: [projectId], references: [id])
 }
