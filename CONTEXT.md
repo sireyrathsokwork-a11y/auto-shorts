@@ -70,8 +70,8 @@ User picks one during onboarding, locked as channel branding.
 
 - Phase 0 → Project setup + User Auth (NextAuth.js)
 - Phase 1 → Express server + Claude API → structured JSON output
-c file
-- Phase 3 → YouTube API uploads video
+- Phase 2 → Remotion renders JSON into video file
+- Phase 3 → YouTube API uploads video 
 - Phase 4 → node-cron daily automation
 - Phase 5 → Resend email approval flow
 - Phase 6 → Next.js dashboard UI
