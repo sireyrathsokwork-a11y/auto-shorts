@@ -1,7 +1,8 @@
+import { ScenePayload } from "@autoshorts/types/payload.type";
 import Anthropic from '@anthropic-ai/sdk';
 import 'dotenv/config';
 
-export async function generateScenes(theme: string, niche: string) {
+export async function generateScenes({theme , niche} : ScenePayload) {
     const anthropic = new Anthropic({
         apiKey: process.env.ANTHROPIC_API_KEY,
     });

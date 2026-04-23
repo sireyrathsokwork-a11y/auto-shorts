@@ -17,21 +17,21 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  createdAt     DateTime  @default(now())
+  createdAt     DateTime? @default(now())
   projects      Project[]
   accounts      Account[]
   sessions      Session[]
 }
 
 model Project {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   channelName String
   niche       String
   musicTrack  String
-  postingTime DateTime @default(now())
-  createdAt   DateTime @default(now())
+  postingTime DateTime? @default(now())
+  createdAt   DateTime? @default(now())
   userId      String
-  user        User     @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
   videos      Video[]
 }
 

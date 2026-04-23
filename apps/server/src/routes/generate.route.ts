@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Missing fields' })
     }
 
-    const scenes = await generateScenes(theme, niche)
+    const scenes = await generateScenes({theme, niche})
 
     const video = await prisma.video.create({
       data: {

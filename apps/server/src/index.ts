@@ -1,6 +1,7 @@
 import express from 'express'
 import 'dotenv/config';
 import generateRouter from './routes/generate.route'
+import projectRouter from './routes/project.route'
 
 const app = express()
 app.use(express.json())
@@ -14,6 +15,7 @@ app.get('/health',(req, res) => {
 })
 
 app.use('/api/generate', generateRouter)
+app.use('/api/projects', projectRouter)
 app.listen(port, () => {
   console.log(`express is running on port : ${port}`)
 })
