@@ -50,6 +50,7 @@ model Video {
   scheduledAt DateTime?
   postedAt    DateTime?
   createdAt   DateTime    @default(now())
+  scenes      Json?
   projectId   String
   project     Project     @relation(fields: [projectId], references: [id])
 }

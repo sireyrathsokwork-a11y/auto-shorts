@@ -1,7 +1,10 @@
 import express from 'express'
+import 'dotenv/config';
+import generateRouter from './routes/generate.route'
 
 const app = express()
-const port = 3001
+app.use(express.json())
+const port = 3000
 
 app.get('/health',(req, res) => {
 
@@ -10,8 +13,7 @@ app.get('/health',(req, res) => {
  })
 })
 
+app.use('/api/generate', generateRouter)
 app.listen(port, () => {
-
   console.log(`express is running on port : ${port}`)
 })
-
