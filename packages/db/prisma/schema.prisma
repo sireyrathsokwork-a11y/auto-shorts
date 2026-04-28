@@ -52,6 +52,7 @@ model Video {
   createdAt   DateTime    @default(now())
   scenes      Json?
   projectId   String
+  videoUrl    String?
   project     Project     @relation(fields: [projectId], references: [id])
 }
 

@@ -18,7 +18,7 @@ router.post('/' , async(req, res)=>{
         try {
          const project =   await prisma.project.create({
               data : {
-                channelName : payload.channelName,
+                channelName : payload.channelName,  
                 niche : payload.niche,
                 musicTrack : payload.musicTrack,
                 userId : payload.userId
