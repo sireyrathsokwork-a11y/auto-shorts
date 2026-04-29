@@ -1,8 +1,7 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { MyComposition } from "./Composition";
-import { PropsSchema } from "./Composition";
 import { z } from "zod";
+import { MyComposition, PropsSchema } from "./Composition";
 
 export const RemotionRoot: React.FC = () => {
   const defaultProps = {
