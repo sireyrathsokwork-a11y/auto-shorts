@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
+    "@autoshorts/db": "*",
     "express": "^5.2.1",
-    "@autoshorts/db": "*"
+    "googleapis": "^171.4.0"
   }
 }
