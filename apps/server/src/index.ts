@@ -19,7 +19,7 @@ const startServer = async () => {
 
   app.get('/health', (req, res) => res.status(200).json({ status: 'OK' }));
   app.use('/api/generate', generateRouter);
-  app.use('/api/projects', projectRouter);
+  app.use('/api/project', projectRouter);
   app.use('/api/upload', uploadRouter);
 
   app.listen(3001, () => console.log('Server running on port 3001'));

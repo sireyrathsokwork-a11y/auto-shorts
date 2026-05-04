@@ -75,7 +75,7 @@ User picks one during onboarding, locked as channel branding.
 - Phase 3 → YouTube API uploads video
 - Phase 4 → node-cron daily automation
 - Phase 5 → Resend email approval flow
-- Phase 6 → Next.js dashboard UI
+- Phase 6 → Frontend Intergration
 - Phase 7 → Testing (unit, integration, e2e)
 - Phase 8 → Web security hardening
 - Phase 9 → Load testing + concurrency (10+ users)
