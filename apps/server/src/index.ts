@@ -5,6 +5,7 @@ import path from 'path';
 import generateRouter from './routes/generate.route';
 import projectRouter from './routes/project.route';
 import uploadRouter from './routes/upload.route';
+import { job } from './jobs/dailyGenerate.job';
 
 const app = express();
 app.use(express.json());
@@ -17,9 +18,10 @@ const startServer = async () => {
     webpackOverride: (config) => config,
   });
 
+  job.start();
   app.get('/health', (req, res) => res.status(200).json({ status: 'OK' }));
   app.use('/api/generate', generateRouter);
-  app.use('/api/project', projectRouter);
+  app.use('/api/projects', projectRouter);
   app.use('/api/upload', uploadRouter);
 
   app.listen(3001, () => console.log('Server running on port 3001'));

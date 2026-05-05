@@ -27,8 +27,9 @@ model Project {
   id          String    @id @default(cuid())
   channelName String
   niche       String
+  theme       String?
   musicTrack  String
-  postingTime DateTime? @default(now())
+  postingTime String?
   createdAt   DateTime? @default(now())
   userId      String
   user        User      @relation(fields: [userId], references: [id])
@@ -43,18 +44,18 @@ enum VideoStatus {
 }
 
 model Video {
-  id          String      @id @default(cuid())
-  title       String
-  script      String
-  status      VideoStatus @default(PENDING)
-  scheduledAt DateTime?
-  postedAt    DateTime?
-  createdAt   DateTime    @default(now())
-  scenes      Json?
-  projectId   String
-  videoUrl    String?
-  youtubeVideoId  String? 
-  project     Project     @relation(fields: [projectId], references: [id])
+  id             String      @id @default(cuid())
+  title          String
+  script         String
+  status         VideoStatus @default(PENDING)
+  scheduledAt    DateTime?
+  postedAt       DateTime?
+  createdAt      DateTime    @default(now())
+  scenes         Json?
+  projectId      String
+  videoUrl       String?
+  youtubeVideoId String?
+  project        Project     @relation(fields: [projectId], references: [id])
 }
 
 model Account {

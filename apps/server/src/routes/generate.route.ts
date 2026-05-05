@@ -1,50 +1,48 @@
-import { prisma } from '@autoshorts/db'
-import { Router } from 'express'
-import { generateScenes } from '../services/claude.service'
-import { renderVideo } from '../services/renderVideo'
+import { prisma } from '@autoshorts/db';
+import { Router } from 'express';
+import { generateScenes } from '../services/claude.service';
+import { renderVideo } from '../services/renderVideo';
 
-const router = Router()
+const router = Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { projectId, theme, niche } = req.body
+    const { projectId, theme, niche } = req.body;
 
     if (!projectId || !theme || !niche) {
-      return res.status(400).json({ error: 'Missing fields' })
+      return res.status(400).json({ error: 'Missing fields' });
     }
 
-    const generated = await generateScenes({theme, niche})
+    const generated = await generateScenes({ theme, niche });
 
     const video = await prisma.video.create({
       data: {
         title: generated.title,
         script: JSON.stringify(generated.scenes),
-        scenes: generated.scenes , 
+        scenes: generated.scenes,
         projectId: projectId,
-      }
-    })
-    
-    const outputPath = await renderVideo(video.id, generated.scenes)
-
- const videoResult =   await prisma.video.update({
-      where : {
-        id : video.id,
       },
-      data : {
-        videoUrl : outputPath
-      }
-    })
+    });
 
+    const outputPath = await renderVideo(video.id, generated.scenes);
+
+    const videoResult = await prisma.video.update({
+      where: {
+        id: video.id,
+      },
+      data: {
+        videoUrl: outputPath,
+      },
+    });
 
     return res.status(201).json({
       success: true,
-      video: videoResult
-    })
-    
+      video: videoResult,
+    });
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({ error: 'Failed to generate' })
+    console.error(error);
+    return res.status(500).json({ error: 'Failed to generate' });
   }
-})
+});
 
-export default router
+export default router;

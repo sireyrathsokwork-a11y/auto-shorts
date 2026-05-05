@@ -14,6 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           scope:
             'openid email profile https://www.googleapis.com/auth/youtube.upload',
           access_type: 'offline', // ensures refresh_token is returned
+          prompt: 'consent',
         },
       },
     }),
