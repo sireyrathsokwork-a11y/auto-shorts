@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
         data: {
           channelName: payload.channelName,
           niche: payload.niche,
+          theme: payload.theme,
           musicTrack: payload.musicTrack,
           userId: payload.userId,
         },

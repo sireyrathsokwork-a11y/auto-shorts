@@ -31,6 +31,27 @@ export async function uploadVideo(videoId: string, userId: string) {
     refresh_token: userAccount.refresh_token,
   });
 
+  const { credentials } = await oauth2Client.refreshAccessToken();
+
+  await prisma.account.update({
+    where: { id: userAccount.id },
+    data: { access_token: credentials.access_token },
+  });
+
+  oauth2Client.on('tokens', async (tokens) => {
+    if (tokens.access_token) {
+      await prisma.account.update({
+        where: {
+          id: userAccount.id,
+          provider: 'google',
+        },
+        data: {
+          access_token: tokens.access_token,
+        },
+      });
+    }
+  });
+
   // initialize the Youtube API library
   const youtube = google.youtube({ version: 'v3', auth: oauth2Client });
 

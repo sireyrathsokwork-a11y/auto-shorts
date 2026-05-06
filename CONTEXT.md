@@ -81,6 +81,7 @@ User picks one during onboarding, locked as channel branding.
 - Phase 9 → Load testing + concurrency (10+ users)
 - Phase 10 → SEO + Core Web Vitals + Lighthouse
 - Phase 11 → YouTube Analytics sync
+- Phase 12 → Testing Automation
 
 ## Mentor Rules
 
