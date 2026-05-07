@@ -66,6 +66,7 @@ User picks one during onboarding, locked as channel branding.
 - Best performing styles tracking
 - SEO optimization (meta tags, structured data, page titles)
 - Web performance audit (Core Web Vitals, Lighthouse score)
+- Move to cloud storage (S3/R2) and delete local file after upload
 
 ## Build Phases
 
