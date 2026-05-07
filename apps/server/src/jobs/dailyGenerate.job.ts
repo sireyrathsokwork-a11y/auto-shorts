@@ -4,6 +4,8 @@ import { prisma } from '@autoshorts/db';
 import { generateScenes } from '../services/claude.service';
 import { renderVideo } from '../services/renderVideo';
 import { uploadVideo } from '../services/youtube.service';
+import { sendEmail } from '../services/resend.service';
+import { generateApprovalToken } from '../util/jwt.util';
 
 export const job = new CronJob(
   '0 */1 * * * *',
@@ -52,9 +54,22 @@ export const job = new CronJob(
             },
           });
 
-          console.log('uploading video-----');
-          await uploadVideo(video.id, project.userId);
-          console.log('uploaded succefully....Yayyyyyy :))');
+          //generate approval token
+          const token = generateApprovalToken(project.userId, video.id);
+
+          const redirectLink = `https://localhost:3002/video/decision?token=${token}`;
+
+          const user = await prisma.user.findUnique({
+            where: {
+              id: project.userId,
+            },
+          });
+
+          if (!user) continue;
+          // mail preview short to user
+          console.log('user email', user.email);
+          await sendEmail(user.email as string, redirectLink);
+          console.log('sending email successfully ...');
         } catch (error) {
           console.log(error);
           continue;
