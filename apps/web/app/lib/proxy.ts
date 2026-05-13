@@ -8,15 +8,20 @@ export async function proxyToExpress(req: Request, endpoint: string) {
     return NextResponse.json({ message: 'Session Expired' }, { status: 401 });
   }
 
-  const body = await req.json();
+  const body = req.method !== 'GET' ? await req.json() : null;
   const response = await fetch(`${process.env.EXPRESS_URL}/${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
       'x-user-id': session.user?.id as string,
     },
-    body: JSON.stringify(body),
+    method: req.method,
+    ...(req.method === 'POST'
+      ? {
+          body: JSON.stringify(body),
+        }
+      : {}),
   });
 
   const data = await response.json();
-  return NextResponse.json(data, { status: (await response).status });
+  return NextResponse.json(data, { status: response.status });
 }
