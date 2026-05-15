@@ -7,9 +7,11 @@ import projectRouter from './routes/project.route';
 import uploadRouter from './routes/upload.route';
 import decisionRouter from './routes/decision.route';
 import { job } from './jobs/dailyGenerate.job';
+import { verifyInternalSecret } from './middleware/internal';
 
 const app = express();
 app.use(express.json());
+app.use(verifyInternalSecret);
 
 export let bundleLocation: string;
 

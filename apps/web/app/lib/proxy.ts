@@ -13,6 +13,7 @@ export async function proxyToExpress(req: Request, endpoint: string) {
     headers: {
       'Content-Type': 'application/json',
       'x-user-id': session.user?.id as string,
+      'x-internal-secret': process.env.INTERNAL_SECRET as string,
     },
     method: req.method,
     ...(req.method === 'POST'

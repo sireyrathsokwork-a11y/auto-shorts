@@ -1,11 +1,9 @@
 import jwt from 'jsonwebtoken';
+import { decode } from '@auth/core/jwt';
 
-export const generateApprovalToken =  (
-  userId: string,
-  videoId: string,
-) => {
+export const generateApprovalToken = (userId: string, videoId: string) => {
   try {
-    return  jwt.sign(
+    return jwt.sign(
       {
         data: {
           userId,
@@ -21,12 +19,9 @@ export const generateApprovalToken =  (
   }
 };
 
-export const verifyApprovalToken =  (token: string) => {
+export const verifyApprovalToken = (token: string) => {
   try {
-    return  jwt.verify(
-      token,
-      process.env.JWT_SECRET_KEY as string,
-    );
+    return jwt.verify(token, process.env.JWT_SECRET_KEY as string);
   } catch (error) {
     console.log(error);
     throw error;
