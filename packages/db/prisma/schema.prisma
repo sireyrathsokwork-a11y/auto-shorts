@@ -26,6 +26,7 @@ model User {
 model Project {
   id          String    @id @default(cuid())
   channelName String
+  imageUrl    String?
   niche       String
   theme       String
   musicTrack  String
