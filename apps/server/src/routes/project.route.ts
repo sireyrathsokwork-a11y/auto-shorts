@@ -1,5 +1,5 @@
+import { ProjectPayload } from '@autoshorts/types';
 import { prisma } from '@autoshorts/db';
-import { ProjectPayload } from '@autoshorts/types/payload.type';
 import { Router } from 'express';
 
 const router = Router();
@@ -52,7 +52,7 @@ router.post('/create', async (req, res) => {
         },
       });
 
-      return res.status(201).json({ success: true, project });
+      return res.status(201).json({ status: 201, project });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to create project' });
     }
