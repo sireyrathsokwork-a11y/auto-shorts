@@ -1,4 +1,3 @@
-// projects.server.ts
 import { auth } from '@/app/lib/auth';
 import { prisma } from '@autoshorts/db';
 

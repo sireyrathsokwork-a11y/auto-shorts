@@ -7,9 +7,9 @@ const router = Router();
 router.get('/', async (req, res) => {
   const userId = req.headers['x-user-id'];
   if (!userId) {
-    return res.status(401).json({
-      status: 401,
-      message: 'User not found',
+    return res.status(400).json({
+      status: 400,
+      message: 'userId is required',
     });
   }
 
@@ -17,6 +17,13 @@ router.get('/', async (req, res) => {
     const projects = await prisma.project.findMany({
       where: { userId: userId as string },
     });
+
+    if( projects.length === 0 ){
+      return res.status(200).json({
+        status : 200 ,
+        message : 'No project found'
+      })
+    }
 
     return res.status(200).json({
       status: 200,
@@ -31,31 +38,21 @@ router.get('/', async (req, res) => {
 
 router.post('/create', async (req, res) => {
   const payload: ProjectPayload = req.body;
+  const userId = req.headers['x-user-id']
+  try {
+    const project = await prisma.project.create({
+      data: {
+        channelName: payload.channelName,
+        niche: payload.niche,
+        theme: payload.theme,
+        musicTrack: payload.musicTrack,
+        userId: String(userId),
+      },
+    });
 
-  const user = await prisma.user.findUnique({
-    where: {
-      id: payload.userId,
-    },
-  });
-
-  if (!user) {
-    return res.status(404).json({ error: 'User not found' });
-  } else {
-    try {
-      const project = await prisma.project.create({
-        data: {
-          channelName: payload.channelName,
-          niche: payload.niche,
-          theme: payload.theme,
-          musicTrack: payload.musicTrack,
-          userId: payload.userId,
-        },
-      });
-
-      return res.status(201).json({ status: 201, project });
-    } catch (error) {
-      return res.status(500).json({ error: 'Failed to create project' });
-    }
+    return res.status(201).json({ status: 201, project });
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to create project' });
   }
 });
 

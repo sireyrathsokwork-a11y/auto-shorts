@@ -4,7 +4,6 @@ export interface ProjectPayload {
   niche: string;
   musicTrack: string;
   postingTime: string;
-  userId: string;
 }
 
 export interface ScenePayload {

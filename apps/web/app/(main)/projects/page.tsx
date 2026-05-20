@@ -1,36 +1,38 @@
 import { getProjects } from '@/app/lib/projects/projects.server';
 import PageContainer from '@/components/PageContainer';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Project } from '@autoshorts/db/generated/prisma/client';
 import { ArrowUpRight, TvMinimalPlay } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NewProjectBtn from './NewProjectBtn';
 
 const CardItem = ({ label, value }: { label: string; value: string }) => {
   return (
     <div className='flex flex-col items-start'>
-      <p className='subtitle-h2'>{label}</p>
-      <p className='text-lg font-semibold'>{value}</p>
+      <p className='subtitle-h3'>{label}</p>
+      <p className='text-md font-semibold'>{value}</p>
     </div>
   );
 };
 
 const ProjectPage = async () => {
   const projects = await getProjects();
-  console.log('res', projects);
   const projectAmount = projects.length;
 
   return (
     <PageContainer
       title='Projects'
       subtitle={`${projectAmount} brand${projectAmount > 0 ? 's' : ''} - pick one to manage its pipeline`}
+      action={<NewProjectBtn/>}
     >
-      <main>
+      <main className=' flex flex-row shrink flex-wrap gap-3 w-full'>
         {projects.map((project: Project) => (
           <Link
-          href={`/projects/${project.id}`}
+            href={`/projects/${project.id}`}
             key={project.id}
-            className=' flex flex-col gap-5 border rounded-md p-5 hover:bg-zinc-900'
+            className=' flex flex-col w-fit gap-5 border rounded-md p-5 hover:bg-zinc-900 bg-zinc-850'
           >
             <div className=' flex justify-between'>
               <div className=' flex gap-3 items-center'>
@@ -48,7 +50,7 @@ const ProjectPage = async () => {
                 )}
 
                 <div>
-                  <p className=' text-xl font-semibold'>
+                  <p className=' text-lg font-semibold'>
                     {project.channelName}
                   </p>
                   <p className='subtitle-h3'>{project.theme}</p>
@@ -56,10 +58,10 @@ const ProjectPage = async () => {
               </div>
               <ArrowUpRight />
             </div>
-            <p className=' text-lg text-zinc-400'>{project.niche}</p>
+            <p className=' text-md text-zinc-400'>{project.niche}</p>
 
             <Separator />
-            <div className=' grid grid-cols-3 justify-start gap-8 items-start'>
+            <div className=' grid grid-cols-3 justify-start xl:gap-5 gap-1 items-start'>
               <CardItem
                 label='VIDEOS'
                 value='54k'
@@ -78,7 +80,9 @@ const ProjectPage = async () => {
             </div>
           </Link>
         ))}
+
       </main>
+
     </PageContainer>
   );
 };

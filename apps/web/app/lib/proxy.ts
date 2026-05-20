@@ -9,7 +9,7 @@ export async function proxyToExpress(req: Request, endpoint: string) {
   }
 
   const body = req.method !== 'GET' ? await req.json() : null;
-  const response = await fetch(`${process.env.EXPRESS_URL}/${endpoint}`, {
+  const response = await fetch(`${process.env.EXPRESS_URL}${endpoint}`, {
     headers: {
       'Content-Type': 'application/json',
       'x-user-id': session.user?.id as string,
@@ -23,6 +23,6 @@ export async function proxyToExpress(req: Request, endpoint: string) {
       : {}),
   });
 
-  const data = await response.json();
+  const data = await  response.json();
   return NextResponse.json(data, { status: response.status });
 }
