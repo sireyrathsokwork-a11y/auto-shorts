@@ -9,3 +9,13 @@ export const getProjects = async () => {
     where: { userId: session.user.id },
   });
 };
+
+export const getProjectDetails = async (projectId : string) => {
+  const session = await auth();
+  if (!session?.user?.id) throw new Error('Unauthorized');
+
+  return await prisma.project.findUnique({
+    where: { id: projectId , userId : session?.user?.id },
+    include: { videos: true },
+  });
+};
