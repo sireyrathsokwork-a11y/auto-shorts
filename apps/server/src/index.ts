@@ -10,7 +10,9 @@ import { job } from './jobs/dailyGenerate.job';
 import { verifyInternalSecret } from './middleware/internal';
 
 const app = express();
+
 app.use(express.json());
+app.use('/outputs', express.static('outputs'));
 app.use(verifyInternalSecret);
 
 export let bundleLocation: string;

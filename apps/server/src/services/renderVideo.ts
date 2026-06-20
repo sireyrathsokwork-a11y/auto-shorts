@@ -11,14 +11,15 @@ export const renderVideo = async (videoId: string, scenes: any[]) => {
     inputProps,
   })
 
-  const outputLocation = path.resolve(`outputs/${videoId}.mp4`)
+  const outputLocation = `http://localhost:3001/outputs/${videoId}.mp4`;
+
   await renderMedia({
     composition,
     serveUrl: bundleLocation,
     codec: 'h264',
-    outputLocation,
+    outputLocation: path.resolve(`outputs/${videoId}.mp4`),
     inputProps,
-  })
+  });
 
   return outputLocation
 }

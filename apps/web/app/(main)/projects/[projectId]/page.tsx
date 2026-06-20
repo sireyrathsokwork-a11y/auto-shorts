@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { ArrowLeft, ArrowRight, TvMinimalPlay } from 'lucide-react';
 import Image from 'next/image';
 import NextVideo from './NextVideo';
-import { Video } from '@autoshorts/db/generated/prisma/client';
+import { Video, VideoStatus } from '@autoshorts/db/generated/prisma/client';
 import { StatusTag } from '@/components/StatusTag';
 
 export const dynamic = 'force-dynamic';
@@ -32,7 +32,14 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
 
   const project = await getProjectDetails(projectId);
 
-  console.log('projct', project);
+  const upcomingVideo = project?.videos
+    ?.filter((video) => video.status === VideoStatus.PENDING)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    )
+    .at(0);
+
   return (
     <PageContainer>
       {project && (
@@ -84,7 +91,7 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
           </section>
 
           <section>
-            <NextVideo />
+            { upcomingVideo && <NextVideo video ={upcomingVideo}/>}
           </section>
 
           <section className=' border rounded-lg p-6 flex flex-col gap-5'>

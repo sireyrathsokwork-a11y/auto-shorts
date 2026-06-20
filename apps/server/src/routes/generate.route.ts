@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
       },
     });
 
+   try {
     const outputPath = await renderVideo(video.id, generated.scenes);
 
     const videoResult = await prisma.video.update({
@@ -39,7 +40,17 @@ router.post('/', async (req, res) => {
       success: true,
       video: videoResult,
     });
+   } catch (error) {
+
+    if (video.id) await prisma.video.delete({
+      where : {
+        id : video.id
+      }
+    })
+    return res.status(500).json({ error: 'Failed to render video' });
+   }
   } catch (error) {
+
     console.error(error);
     return res.status(500).json({ error: 'Failed to generate' });
   }
