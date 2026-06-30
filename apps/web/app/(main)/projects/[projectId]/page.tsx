@@ -127,7 +127,7 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
                         style={{ width: '280px', height: '400px' }}
                       >
                         <source
-                          src='https://example.com/video.mp4'
+                          src={video.videoUrl ?? ''}
                           type='video/mp4'
                         />
                       </video>

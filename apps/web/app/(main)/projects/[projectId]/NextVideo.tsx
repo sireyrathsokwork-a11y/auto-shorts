@@ -4,7 +4,8 @@ import { ButtonCus } from '@/components/ButtonCus';
 import { StatusTag } from '@/components/StatusTag';
 import { Video } from '@autoshorts/db/generated/prisma/client';
 import { CalendarClock, Check, RefreshCcw } from 'lucide-react';
-import { useState } from 'react';
+import {  useState } from 'react';
+import { toast } from 'sonner';
 
 const Card = ({ label, value }: { label: string; value: string | number }) => {
   return (
@@ -18,9 +19,53 @@ const Card = ({ label, value }: { label: string; value: string | number }) => {
 };
 
 const NextVideo = ({ video }: { video: Video }) => { 
-  const [btnLoading, setBtnLoading] = useState(false);
+  const [btnLoading, setBtnLoading] = useState({
+    approve: false,
+    regenerate: false,
+    reschedule: false,
+  });
 
   if (!video.videoUrl) return <p>Video is unavailable</p>;
+
+  const handleVideoApproval = async (action: 'approve' | 'regenerate' | 'reschedule') => {
+    const token = new URLSearchParams(window.location.search).get('token');
+
+    if (!token) {
+    toast.error('No token found');
+      return;
+    }
+
+    setBtnLoading({
+      approve: false,
+      regenerate: false,
+      reschedule: false,
+      [action]: true, 
+    });
+
+    try {
+      const res = await fetch(`/api/decision?token=${token}`, {
+        method: 'POST',
+        body: JSON.stringify({ action }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+      toast.success(`Video ${action}d!`);
+      } else {
+        toast.error('Error: ' + data.message);
+      }
+    } catch (error) {
+      toast.error('Failed to ' + action);
+      console.error(error);
+    }  finally {
+      setBtnLoading({
+        approve: false,
+        regenerate: false,
+        reschedule: false,
+      });
+  
+    }
+  };
 
   return (
     <main className=''>
@@ -61,6 +106,11 @@ const NextVideo = ({ video }: { video: Video }) => {
             />
 
             <Card
+              label='Created at'
+              value={video.createdAt.toLocaleDateString()}
+            />
+
+            <Card
               label='Posts At'
               value={'7:00 PM'}
             />
@@ -70,22 +120,39 @@ const NextVideo = ({ video }: { video: Video }) => {
           <div className=' flex flex-col gap-3'>
             <div className=' flex gap-2'>
               <ButtonCus
-                loading={btnLoading}
+                loading={btnLoading.approve}
+                disabled={
+                  btnLoading.approve ||
+                  btnLoading.regenerate ||
+                  btnLoading.reschedule
+                }
                 size={'xl'}
                 btnName='Approve'
                 icon={<Check />}
+                onClick={() => handleVideoApproval('approve')}
               />
               <ButtonCus
-                loading={btnLoading}
+                loading={btnLoading.regenerate}
+                disabled={
+                  btnLoading.approve ||
+                  btnLoading.regenerate ||
+                  btnLoading.reschedule
+                }
                 size={'xl'}
                 btnName='Regenerate'
                 variant={'outline'}
                 icon={<RefreshCcw />}
+                onClick={() => handleVideoApproval('regenerate')}
               />
             </div>
 
             <ButtonCus
-              loading={btnLoading}
+              loading={btnLoading.reschedule}
+              disabled={
+                btnLoading.approve ||
+                btnLoading.regenerate ||
+                btnLoading.reschedule
+              }
               size={'xl'}
               btnName='Reschedule'
               variant={'outline'}

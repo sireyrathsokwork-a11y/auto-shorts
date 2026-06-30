@@ -21,6 +21,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { ChevronsUpDownIcon, SparklesIcon, BadgeCheckIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
+import { signOut } from "next-auth/react"
 
 export function NavUser({
   user,
@@ -39,37 +40,43 @@ export function NavUser({
           <DropdownMenuTrigger
             render={
               <SidebarMenuButton
-                size="lg"
-                className="aria-expanded:bg-muted aria-expanded:text-foreground"
+                size='lg'
+                className='aria-expanded:bg-muted aria-expanded:text-foreground'
               />
             }
           >
             <Avatar>
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage
+                src={user.avatar}
+                alt={user.name}
+              />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{user.name}</span>
-              <span className="truncate text-xs">{user.email}</span>
+            <div className='grid flex-1 text-left text-sm leading-tight'>
+              <span className='truncate font-medium'>{user.name}</span>
+              <span className='truncate text-xs'>{user.email}</span>
             </div>
-            <ChevronsUpDownIcon className="ml-auto size-4" />
+            <ChevronsUpDownIcon className='ml-auto size-4' />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="end"
+            className='min-w-56 rounded-lg'
+            side={isMobile ? 'bottom' : 'right'}
+            align='end'
             sideOffset={4}
           >
             <DropdownMenuGroup>
-              <DropdownMenuLabel className="p-0 font-normal">
-                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+              <DropdownMenuLabel className='p-0 font-normal'>
+                <div className='flex items-center gap-2 px-1 py-1.5 text-left text-sm'>
                   <Avatar>
-                    <AvatarImage src={user.avatar} alt={user.name} />
+                    <AvatarImage
+                      src={user.avatar}
+                      alt={user.name}
+                    />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name}</span>
-                    <span className="truncate text-xs">{user.email}</span>
+                  <div className='grid flex-1 text-left text-sm leading-tight'>
+                    <span className='truncate font-medium'>{user.name}</span>
+                    <span className='truncate text-xs'>{user.email}</span>
                   </div>
                 </div>
               </DropdownMenuLabel>
@@ -77,34 +84,33 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <SparklesIcon
-                />
+                <SparklesIcon />
                 Upgrade to Pro
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <BadgeCheckIcon
-                />
+                <BadgeCheckIcon />
                 Account
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCardIcon
-                />
+                <CreditCardIcon />
                 Billing
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <BellIcon
-                />
+                <BellIcon />
                 Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <LogOutIcon
-                />
+              <DropdownMenuItem
+                onClick={async () => {
+                  await signOut({ redirectTo: '/signin' });
+                }}
+              >
+                <LogOutIcon />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -112,5 +118,5 @@ export function NavUser({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

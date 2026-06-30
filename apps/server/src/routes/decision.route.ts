@@ -40,9 +40,9 @@ router.post('/', async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(401).json({
-      status: 401,
-      message: 'Invalid Token',
+    return res.status(500).json({
+      status: 500,
+      message: error,
     });
   }
 });

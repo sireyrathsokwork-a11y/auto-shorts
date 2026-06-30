@@ -51,7 +51,6 @@ export async function uploadVideo(videoId: string, userId: string) {
       });
     }
   });
-
   // initialize the Youtube API library
   const youtube = google.youtube({ version: 'v3', auth: oauth2Client });
 

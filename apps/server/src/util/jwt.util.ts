@@ -1,14 +1,11 @@
 import jwt from 'jsonwebtoken';
-import { decode } from '@auth/core/jwt';
 
 export const generateApprovalToken = (userId: string, videoId: string) => {
   try {
     return jwt.sign(
       {
-        data: {
-          userId,
-          videoId,
-        },
+        userId,
+        videoId,
       },
       process.env.JWT_SECRET_KEY as string,
       { expiresIn: '1d' },

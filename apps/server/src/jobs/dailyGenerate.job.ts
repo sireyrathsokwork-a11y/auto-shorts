@@ -20,7 +20,6 @@ export const job = new CronJob(
     console.log('cron is checking');
 
     if (dueProjects) {
-      console.log('dueProjects :', dueProjects);
     }
 
     if (dueProjects.length > 0) {
@@ -31,8 +30,6 @@ export const job = new CronJob(
             theme: project.theme,
             niche: project.niche,
           });
-
-          console.log('generated: ', generated);
 
           const video = await prisma.video.create({
             data: {
@@ -57,7 +54,7 @@ export const job = new CronJob(
           //generate approval token
           const token = generateApprovalToken(project.userId, video.id);
 
-          const redirectLink = `https://localhost:3002/video/decision?token=${token}`;
+          const redirectLink = `http://localhost:3002/projects/${project.id}?token=${token}`;
 
           const user = await prisma.user.findUnique({
             where: {
@@ -66,8 +63,6 @@ export const job = new CronJob(
           });
 
           if (!user) continue;
-          // mail preview short to user
-          console.log('user email', user.email);
           await sendEmail(user.email as string, redirectLink);
           console.log('sending email successfully ...');
         } catch (error) {
