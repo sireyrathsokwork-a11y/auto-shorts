@@ -45,7 +45,7 @@ router.post('/create', async (req, res) => {
         channelName: payload.channelName,
         niche: payload.niche,
         theme: payload.theme,
-        musicTrack: payload.musicTrack,
+        trackId: payload.musicTrack,
         userId: String(userId),
       },
     });

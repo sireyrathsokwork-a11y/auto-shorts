@@ -29,12 +29,13 @@ model Project {
   imageUrl    String?
   niche       String
   theme       String
-  musicTrack  String
   postingTime String?
   createdAt   DateTime? @default(now())
   userId      String
   user        User      @relation(fields: [userId], references: [id])
   videos      Video[]
+  trackId    String  
+  musicTrack MusicTrack @relation(fields: [trackId], references: [id])
 }
 
 enum VideoStatus {
@@ -57,6 +58,14 @@ model Video {
   videoUrl       String?
   youtubeVideoId String?
   project        Project     @relation(fields: [projectId], references: [id])
+}
+
+model MusicTrack {
+  id String @id @default(cuid())
+  name String
+  filePath String
+  attribution String
+  project Project[] 
 }
 
 model Account {

@@ -1,5 +1,5 @@
-import { ScenePayload } from "@autoshorts/types/payload.type";
 import Anthropic from '@anthropic-ai/sdk';
+import { ScenePayload } from '@autoshorts/types';
 import 'dotenv/config';
 
 export async function generateScenes({theme , niche} : ScenePayload) {

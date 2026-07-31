@@ -1,4 +1,5 @@
 export interface ProjectPayload {
+  userId : string
   channelName: string;
   theme: string;
   niche: string;
@@ -20,3 +21,9 @@ export interface APIErrorResponse {
   status: number;
   message: string;
 }
+
+export interface MusicTrackInfo  {
+  name: string;
+  path: string;
+  attr: string;
+};

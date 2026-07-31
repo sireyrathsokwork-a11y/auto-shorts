@@ -1,5 +1,5 @@
 import { prisma } from '@autoshorts/db';
-import { ProjectPayload } from '@autoshorts/types/payload.type';
+import { ProjectPayload } from '@autoshorts/types';
 
 export async function createProject(data: ProjectPayload) {
   const user = await prisma.user.findUnique({
@@ -15,7 +15,7 @@ export async function createProject(data: ProjectPayload) {
           channelName: data.channelName,
           niche: data.niche,
           theme: data.theme,
-          musicTrack: data.musicTrack,
+          trackId: data.musicTrack,
           userId: data.userId,
         },
       });
