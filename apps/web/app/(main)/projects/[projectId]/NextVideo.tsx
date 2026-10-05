@@ -4,7 +4,7 @@ import { ButtonCus } from '@/components/ButtonCus';
 import { StatusTag } from '@/components/StatusTag';
 import { Video } from '@autoshorts/db/generated/prisma/client';
 import { CalendarClock, Check, RefreshCcw } from 'lucide-react';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'sonner';
 
 const Card = ({ label, value }: { label: string; value: string | number }) => {
@@ -18,7 +18,7 @@ const Card = ({ label, value }: { label: string; value: string | number }) => {
   );
 };
 
-const NextVideo = ({ video }: { video: Video }) => { 
+const NextVideo = ({ video }: { video: Video }) => {
   const [btnLoading, setBtnLoading] = useState({
     approve: false,
     regenerate: false,
@@ -27,11 +27,13 @@ const NextVideo = ({ video }: { video: Video }) => {
 
   if (!video.videoUrl) return <p>Video is unavailable</p>;
 
-  const handleVideoApproval = async (action: 'approve' | 'regenerate' | 'reschedule') => {
+  const handleVideoApproval = async (
+    action: 'approve' | 'regenerate' | 'reschedule',
+  ) => {
     const token = new URLSearchParams(window.location.search).get('token');
 
     if (!token) {
-    toast.error('No token found');
+      toast.error('No token found');
       return;
     }
 
@@ -39,7 +41,7 @@ const NextVideo = ({ video }: { video: Video }) => {
       approve: false,
       regenerate: false,
       reschedule: false,
-      [action]: true, 
+      [action]: true,
     });
 
     try {
@@ -50,20 +52,19 @@ const NextVideo = ({ video }: { video: Video }) => {
       const data = await res.json();
 
       if (res.ok) {
-      toast.success(`Video ${action}d!`);
+        toast.success(`Video ${action}d!`);
       } else {
         toast.error('Error: ' + data.message);
       }
     } catch (error) {
       toast.error('Failed to ' + action);
       console.error(error);
-    }  finally {
+    } finally {
       setBtnLoading({
         approve: false,
         regenerate: false,
         reschedule: false,
       });
-  
     }
   };
 
@@ -86,7 +87,7 @@ const NextVideo = ({ video }: { video: Video }) => {
           style={{ height: '450px' }}
         >
           <source
-            src={video.videoUrl}
+            src={`${process.env.NEXT_PUBLIC_EXPRESS_URL}/${video.videoUrl}`}
             type='video/mp4'
           />
         </video>

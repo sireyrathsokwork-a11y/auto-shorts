@@ -3,7 +3,7 @@ export interface ProjectPayload {
   channelName: string;
   theme: string;
   niche: string;
-  musicTrack: string;
+  trackId: string;
   postingTime: string;
 }
 

@@ -24,7 +24,7 @@ export function ButtonCus({
           disabled
         >
           <Spinner data-icon='inline-start' />
-          {`${btnName}...`}
+          Loading...
         </Button>
       ) : (
         <Button

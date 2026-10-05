@@ -15,10 +15,12 @@ export async function createProject(data: ProjectPayload) {
           channelName: data.channelName,
           niche: data.niche,
           theme: data.theme,
-          trackId: data.musicTrack,
+          trackId: data.trackId,
           userId: data.userId,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      throw error
+    }
   }
 }

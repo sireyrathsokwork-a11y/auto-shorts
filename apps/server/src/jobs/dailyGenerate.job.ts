@@ -3,6 +3,7 @@ import { CronJob } from 'cron';
 import { prisma } from '@autoshorts/db';
 import { generateScenes } from '../services/claude.service';
 import { renderVideo } from '../services/renderVideo';
+import { getMusicUrl } from '../util/music.util';
 import { uploadVideo } from '../services/youtube.service';
 import { sendEmail } from '../services/resend.service';
 import { generateApprovalToken } from '../util/jwt.util';
@@ -15,6 +16,7 @@ export const job = new CronJob(
       where: {
         postingTime: time,
       },
+      include: { musicTrack: true },
     });
 
     console.log('cron is checking');
@@ -40,7 +42,11 @@ export const job = new CronJob(
             },
           });
 
-          const outputPath = await renderVideo(video.id, generated.scenes);
+          const outputPath = await renderVideo(
+            video.id,
+            generated.scenes,
+            getMusicUrl(project.musicTrack?.filePath),
+          );
 
           await prisma.video.update({
             where: {

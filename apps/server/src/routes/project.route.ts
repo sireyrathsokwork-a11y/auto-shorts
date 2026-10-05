@@ -18,11 +18,11 @@ router.get('/', async (req, res) => {
       where: { userId: userId as string },
     });
 
-    if( projects.length === 0 ){
+    if (projects.length === 0) {
       return res.status(200).json({
-        status : 200 ,
-        message : 'No project found'
-      })
+        status: 200,
+        message: 'No project found',
+      });
     }
 
     return res.status(200).json({
@@ -38,14 +38,16 @@ router.get('/', async (req, res) => {
 
 router.post('/create', async (req, res) => {
   const payload: ProjectPayload = req.body;
-  const userId = req.headers['x-user-id']
+  const userId = req.headers['x-user-id'];
+
+  console.log('creating new project');
   try {
     const project = await prisma.project.create({
       data: {
         channelName: payload.channelName,
         niche: payload.niche,
         theme: payload.theme,
-        trackId: payload.musicTrack,
+        trackId: payload.trackId,
         userId: String(userId),
       },
     });

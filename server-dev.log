@@ -1,0 +1,493 @@
+
+> @autoshorts/server@1.0.0 dev
+> tsx watch src/index.ts
+
+Server running on port 3001
+cron is checking
+creating new project
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+creating new project
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+This version of Remotion uses Chrome version 149.0.7790.0, but the installed one differs (installed: 144.0.7559.20). Re-downloading.
+Downloading Chrome Headless Shell https://www.remotion.dev/chrome-headless-shell
+Customize this behavior by adding a onBrowserDownload function to selectComposition().
+Downloading from: https://storage.googleapis.com/chrome-for-testing-public/149.0.7790.0/win64/chrome-headless-shell-win64.zip
+Downloading Chrome Headless Shell - 9.5 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 19.1 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 28.6 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 38.2 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 47.7 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 57.3 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 66.8 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 76.4 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 85.9 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 95.5 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 105 Mb/113.3 Mb
+Downloading Chrome Headless Shell - 113.3 Mb/113.3 Mb
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+[33mThe site was bundled with version 4.0.523 of @remotion/bundler, while @remotion/renderer is on version 4.0.452. You may not have the newest bugfixes and features.[39m
+[33mTo resolve this warning:[39m
+[33m▸ Use `npx remotion lambda sites create` to redeploy the site with the latest version.[39m
+[33m  ℹ Use --site-name with the same name as before to overwrite your site.[39m
+[33m▸ Use `deploySite()` if you are using the Node.JS APIs.[39m
+cron is checking
+Resend result: {"data":{"id":"01a0d761-bc78-7d2e-b21f-90a7a8f713c4"},"error":null,"headers":{"cf-cache-status":"DYNAMIC","cf-ray":"a4082d994928fd83-SIN","connection":"keep-alive","content-length":"45","content-type":"application/json","date":"Fri, 25 Sep 2026 07:05:01 GMT","ratelimit-limit":"10","ratelimit-policy":"10;w=1","ratelimit-remaining":"9","ratelimit-reset":"1","server":"cloudflare","x-resend-daily-quota":"0","x-resend-monthly-quota":"0"}}
+sending email successfully ...
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking
+cron is checking

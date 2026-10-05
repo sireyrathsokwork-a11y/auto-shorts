@@ -7,6 +7,7 @@ import { ArrowUpRight, TvMinimalPlay } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NewProjectBtn from './NewProjectBtn';
+import { getMusicTrack } from '@/app/lib/music-track';
 
 const CardItem = ({ label, value }: { label: string; value: string }) => {
   return (
@@ -20,12 +21,13 @@ const CardItem = ({ label, value }: { label: string; value: string }) => {
 const ProjectPage = async () => {
   const projects = await getProjects();
   const projectAmount = projects.length;
+  const tracks = await getMusicTrack()
 
   return (
     <PageContainer
       title='Projects'
       subtitle={`${projectAmount} brand${projectAmount > 0 ? 's' : ''} - pick one to manage its pipeline`}
-      action={<NewProjectBtn/>}
+      action={<NewProjectBtn tracks={tracks}/>}
     >
       <main className=' flex flex-row shrink flex-wrap gap-3 w-full'>
         {projects.map((project: Project) => (

@@ -1,11 +1,12 @@
 import { getProjectDetails } from '@/app/lib/projects/projects.server';
 import PageContainer from '@/components/PageContainer';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, ArrowRight, TvMinimalPlay } from 'lucide-react';
+import { ArrowRight, TvMinimalPlay } from 'lucide-react';
 import Image from 'next/image';
 import NextVideo from './NextVideo';
 import { Video, VideoStatus } from '@autoshorts/db/generated/prisma/client';
 import { StatusTag } from '@/components/StatusTag';
+import BtnGenerate from './BtnGenerate';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,12 +16,14 @@ const Card = ({
   subDetail,
 }: {
   label: string;
-  value: number |  string;
+  value: number | string;
   subDetail: string;
 }) => {
   return (
     <div className=' flex flex-col gap-4 border p-6 w-75 rounded-lg text-start'>
-      <p className=' text-md text-zinc-400  font-semibold'>{label.toUpperCase()}</p>
+      <p className=' text-md text-zinc-400  font-semibold'>
+        {label.toUpperCase()}
+      </p>
       <p className=' text-2xl font-bold'>{value}</p>
       <p className=' text-md font-semibold text-zinc-400'>{subDetail}</p>
     </div>
@@ -41,7 +44,7 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
     .at(0);
 
   return (
-    <PageContainer>
+    <PageContainer action={<BtnGenerate projectId={projectId} />}>
       {project && (
         <>
           <section className=' flex flex-col w-fit rounded-md hover:bg-zinc-900 bg-zinc-850'>
@@ -91,7 +94,7 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
           </section>
 
           <section>
-            { upcomingVideo && <NextVideo video ={upcomingVideo}/>}
+            {upcomingVideo && <NextVideo video={upcomingVideo} />}
           </section>
 
           <section className=' border rounded-lg p-6 flex flex-col gap-5'>
@@ -127,7 +130,7 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
                         style={{ width: '280px', height: '400px' }}
                       >
                         <source
-                          src={video.videoUrl ?? ''}
+                          src={`${process.env.NEXT_PUBLIC_EXPRESS_URL}/${video.videoUrl}`}
                           type='video/mp4'
                         />
                       </video>
@@ -138,7 +141,6 @@ const ProjectDetail = async ({ params }: { params: { projectId: string } }) => {
                           Created At : {video.createdAt.toLocaleDateString()}
                         </p>
                       </div>
-
                     </div>
                   </div>
                 ))}

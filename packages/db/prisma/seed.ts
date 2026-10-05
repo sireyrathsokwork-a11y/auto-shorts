@@ -10,8 +10,8 @@ const prisma = new PrismaClient({ adapter });
 
 export const musicTrack: MusicTrackInfo[] = [
   {
-    name: 'SweetStory',
-    path: '/music-track/sweet-story.mp3',
+    name: 'Sentiment',
+    path: '/music-track/sentiment.mp3',
     attr: 'Music from Free To Use — Source: https://freetouse.com/music — Track by Pufino',
   },
   {

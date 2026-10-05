@@ -1,6 +1,6 @@
+import { bundle } from '@remotion/bundler';
 import express from 'express';
 import 'dotenv/config';
-import { bundle } from '@remotion/bundler';
 import path from 'path';
 
 import { job } from './jobs/dailyGenerate.job';

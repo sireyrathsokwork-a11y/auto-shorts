@@ -9,7 +9,6 @@ export const createProject = async (
 ): Promise<APIResponse<Project> | APIErrorResponse> => {
   const res = await fetch('/api/projects', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
   if (!res.ok) {

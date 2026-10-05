@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ProjectDialog } from './ProjectDialog';
+import { MusicTrack } from '@autoshorts/db/generated/prisma/client';
 
-const NewProjectBtn = () => {
+const NewProjectBtn = ({ tracks }: { tracks: MusicTrack[] }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,6 +17,7 @@ const NewProjectBtn = () => {
         New Project
       </Button>
       <ProjectDialog
+        musicTrack={tracks}
         open={open}
         setOpen={setOpen}
       />
